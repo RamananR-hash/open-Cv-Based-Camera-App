@@ -1,10 +1,9 @@
-import cv2
+import cv2#pip install opencv-python
 from datetime import datetime
 import threading
 import os
 from tkinter import filedialog
 import tkinter as tk
-import ctypes
 def submit():
         global name_val
         global name_val2
@@ -19,7 +18,7 @@ def submit():
         #print("Function Called")
 root=tk.Tk()
 cb = tk.IntVar()
-root.title("VIKRA M300")
+root.title("CAMERA")
 name_var=tk.StringVar()
 passw_var=tk.StringVar()
 var=tk.IntVar()
@@ -29,10 +28,8 @@ def isChecked():
         cap=cv2.VideoCapture(1)
     else:
         cap=cv2.VideoCapture(0)
-chk=tk.Checkbutton(root, text="Web Camera Available?", variable=cb, onvalue=1, offvalue=0)
+chk=tk.Checkbutton(root, text="Secondary Camera", variable=cb, onvalue=1, offvalue=0)
 name_label = tk.Label(root, text = 'FIRST NAME', font=('calibre',10, 'bold'))
-add_label = tk.Label(root, text = 'Vikra Ocean Tech Pvt Ltd \n Sithalapakkam \n Chennai,Tamil Nadu \n INDIA-600126 \n +9173558259693', font=('calibre',10, 'bold'))
-mail_label = tk.Label(root, text = 'Visit Us @ \n www.vikraoceantech.com', font=('calibre',10, 'bold'))
 name_entry = tk.Entry(root,textvariable = name_var, font=('calibre',10,'normal'))
 passw_label = tk.Label(root, text = 'SECOND NAME', font = ('calibre',10,'bold'))
 passw_entry=tk.Entry(root, textvariable = passw_var, font = ('calibre',10,'normal'))
@@ -44,8 +41,6 @@ name_entry.grid(row=0,column=1)
 passw_label.grid(row=1,column=0)
 passw_entry.grid(row=1,column=1)
 sub_btn.grid(row=3,column=1)
-mail_label.grid(row=6,column=1)
-add_label.grid(row=6,column=0)
 sub_btn.wait_variable(var)
 path=filedialog.askdirectory()
 screen_width = root.winfo_screenwidth()
@@ -84,7 +79,7 @@ def show_video():
                                 image = cv2.putText(imS,name_val2,name_pos2,font,fontScale,blue,thickness,cv2.LINE_AA)
                                 image = cv2.putText(imS, '.', (50,50), font, 5, red, 20, cv2.LINE_AA)
                                 image = cv2.putText(imS, str(time.strftime("%H"+ ":"+"%M"+":"+"%S")), (50,50), font, fontScale, red, 2, cv2.LINE_AA)
-                                cv2.imshow("frame2", image)
+                                cv2.imshow("CAMERA", image)
                         else:
                                 imS = cv2.resize(frame, displaySize)
                                 print(time_pos,displaySize)
@@ -92,7 +87,7 @@ def show_video():
                                 image = cv2.putText(imS,str(time.strftime("Time:-"+"%H"+ ":"+"%M"+":"+"%S")),time_pos,font,fontScale,blue,thickness,cv2.LINE_AA)
                                 image = cv2.putText(imS,str(now.strftime("Date:-"+"%d"+ ":"+"%m"+":"+"%y")),date_pos,font,fontScale,blue,thickness,cv2.LINE_AA)
                                 image = cv2.putText(imS,name_val2,name_pos2,font,fontScale,blue,thickness,cv2.LINE_AA)
-                                cv2.imshow("frame2", image)
+                                cv2.imshow("CAMERA", image)
                         k = cv2.waitKey(1) & 0Xff
                         #print(k)
                         if k == ord('v'):
