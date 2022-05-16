@@ -1,3 +1,4 @@
+__author__ = 'Ramanan'
 import cv2#pip install opencv-python
 from datetime import datetime
 import threading
